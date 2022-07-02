@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    privileged: true
+    user: root
+    ports:
+     - 8080:8080
+     - 50000:50000
+    container_name: jenkins
+    volumes:
+    - ./jenkins_compose/jenkins_configuration:/var/jenkins_home
+    #  - /var/run/docker.sock:/var/run/docker.sock
+
+# networks:
+#   default:
+#     name: multinode-demo
+#     external: true
+
+  # agent:
+  #   image: jenkins/ssh-agent:jdk11
+  #   privileged: true
+  #   user: root
+  #   container_name: agent
+  #   expose:
+  #     - 22
+  #   environment:
+  #     - JENKINS_AGENT_SSH_PUBKEY=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCoIuVUWD6gGiGQy1sjmnoTKrc5ChDatcDAkQHFzisHuxtXmRC1/D6AbgTPiGNks1kKIVGYifvAV+nA9IKVvw0OFTaZWQpcBRVLfcjYztzbjf8R4uhfZmrQtxORkHQgcnRvWmZP1f3LNjPhG4X3h9djJjyQ7nM5+5vrzcQjKhDWATukFSminOBGGJxDNJP1ul3OnlU7tRRaPsUqwbMhf4oR4FIzTnW33T+9sKlnTY9lfaoVpkzxKDHBf2N0uH97Ypx7+1HRdx04ijX3znFilPW0k4gpxT8HKYdGc3mgy76x90abv6jNQqYNZs/2PB3CTm4B3KbOb9wLkHf7LnUHnO7se1whTKjrQa8x5CnuJEsXcqcbyuAY88DRETa6rbtBroafrRtzPeISeBSXmSrdgKXEyc0zi5yEprY8c+aU86GTyQbctnBxTMWZYxH/V3aCSQY/88n9qimiyLzSjRkUK00LYFUn4ebGewUSHeKO6KkwGcALSMOOIBqIuvZ0z2Vfb+M= alvi@Jervis
